@@ -16,3 +16,16 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix' => 'api'], function() use ($router){
+
+    $router->group(['prefix' => 'employee'], function() use ($router){
+        $router->get('list', 'EmployeeController@list');
+        $router->get('{id}', 'EmployeeController@get');
+        $router->post('store', 'EmployeeController@store');
+        $router->post('salary/sync', 'EmployeeController@salarysync');
+        $router->put('/{id}', 'EmployeeController@update');
+        $router->delete('/{id}', 'EmployeeController@destroy');
+    });
+
+});
