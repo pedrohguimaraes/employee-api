@@ -3,6 +3,7 @@ namespace App\Services;
 
 use App\Models\Salary;
 use App\Repositories\EmployeeRepositoryInterface;
+use Illuminate\Http\Request;
 
 class EmployeeService
 {
@@ -14,14 +15,14 @@ class EmployeeService
         $this->repo = $repo;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        return $this->repo->list();
+        return $this->repo->list($request);
     }
 
     public function get($id)
     {
-        return $this->repo->get($id);
+        $this->repo->get($id);
     }
 
     public function store(array $data)

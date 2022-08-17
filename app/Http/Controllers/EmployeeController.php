@@ -15,9 +15,9 @@ class EmployeeController extends Controller
         $this->service = $service;
     }
 
-    public function list()
+    public function list(Request $request)
     {
-        return $this->service->list();
+        return $this->service->list($request);
     }
 
     public function get($id)

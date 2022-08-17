@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
+            $table->timestamps();
             $table->string('name');
             $table->string('cpf');
             $table->string('rg');
@@ -25,8 +26,6 @@ return new class extends Migration
             $table->string('number');
             $table->string('city');
             $table->string('state');
-            $table->dateTime('created_at');
-            $table->dateTime('updated_at');
         });
     }
 

@@ -21,4 +21,9 @@ class Employee extends Model
         'city',
         'state',
     ];
+
+    public function salary()
+    {
+        return $this->hasMany(Salary::class, 'employee_id');
+    }
 }

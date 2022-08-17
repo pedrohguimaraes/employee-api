@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 
 class EmployeeRepository implements EmployeeRepositoryInterface
 {
@@ -13,9 +14,16 @@ class EmployeeRepository implements EmployeeRepositoryInterface
         $this->model = $model;
     }
 
-    public function list()
+    public function list(Request $data)
     {
-        return $this->model->all();
+        $employee = $this->model->with('salary');
+
+        if($data->has('cpf'))
+        {
+            $employee = $this->model->where('cpf', $data->cpf);
+        }
+
+        return $employee->get();
     }
 
     public function get($id)
